@@ -1,46 +1,54 @@
-def leerArchivo():
+def readFile():
+	file = open("texto.txt", 'r')
+	return file
 
-	#nombreArchivo = input("Ingrese el nombre del archivo: ")
+def writeFile(letter):
+	archivo = open("salida.txt" ,'a')
+	archivo.write(str(letter))		
 
-	archivo = open("texto.txt", 'r')
+def readFileWordReservate():
+	file = open("posibilidades.txt", 'r')
+	listWord = []
+	for word in file:
+		aux = word.split()
+		aux.append(len(aux[0]))
+		listWord.append(aux)
+	return listWord
 
-	for linea in archivo:
-		print(linea)
+def separate(file):
+	listWord = readFileWordReservate();
+	for row in file:
+		rowSeparate = row.split()
+		for word in rowSeparate:
+			analysis(word,listWord)
 
-	return archivo
-
-
-def escribirArchivo(listaSecuencia):
-
-	#nombre = input("\n Ingrese el nombre del archivo a escribir (Sin extension): ")
-
-	archivo = open("salida.txt" ,'w')
-
-	archivo.write("*********************************************\n")
-
-	for secuencia in listaSecuencia:
-		
-		archivo.write(secuencia)		
-		archivo.write("\n")
-
-	archivo.write("*********************************************\n")
-
-def separador():
-
-	
-	
-	return 
+def analysis(word,listWord):
+	writeFile("Secuencia a evaluar es: " + word + "\n")
+	count = 0 
+	countLetter = 0
+	maximo = 0
+	lenWord = len(word)
+	while count < lenWord:
+		for element in listWord:
+			if ((lenWord - count) >= element[1] ):
+				for x in range(0,len(element[0])):
+					if(element[0][x] == word[x]):
+						countLetter = countLetter + 1
+					else:
+						countLetter = 0
+						break
+				if (maximo < countLetter):
+					maximo = countLetter
+				countLetter = 0
+		writeFile(word[:maximo] + "\n")
+		word = word[maximo:]
+		count = maximo + count
+		maximo = 0
 
 def main():
-
 	# Leer archivo de secuencia 
-	archivo = leerArchivo()
-
+	file = readFile()
 	# Separador
-
-	separador()
-
-	# Escribir archivo de salida
-	escribirArchivo(["cv","cv"])
+	separate(file)
 
 main()

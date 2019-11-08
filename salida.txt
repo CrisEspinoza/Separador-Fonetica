@@ -1,4 +1,26 @@
-*********************************************
-cv
-cv
-*********************************************
+Secuencia a evaluar es: cvcvcvcv
+cvc
+v
+cvc
+v
+Secuencia a evaluar es: v
+v
+Secuencia a evaluar es: 0v
+0v
+Secuencia a evaluar es: v0
+v0
+Secuencia a evaluar es: 0v0
+0v0
+Secuencia a evaluar es: cvcvcvcv
+cvc
+v
+cvc
+v
+Secuencia a evaluar es: v
+v
+Secuencia a evaluar es: 0v
+0v
+Secuencia a evaluar es: v0
+v0
+Secuencia a evaluar es: 0v0
+0v0
